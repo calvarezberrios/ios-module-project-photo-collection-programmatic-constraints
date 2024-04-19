@@ -25,8 +25,10 @@ class PhotoCollectionViewCell: UICollectionViewCell {
     }
     
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) is not supported")
+        super.init(coder: coder)
+        setUpSubviews()
     }
+    
     
     private func setUpSubviews() {
         let imageView = UIImageView()
@@ -45,10 +47,10 @@ class PhotoCollectionViewCell: UICollectionViewCell {
             NSLayoutConstraint.init(item: imageView, attribute: .leading, relatedBy: .equal, toItem: self, attribute: .leading, multiplier: 1, constant: 0),
             NSLayoutConstraint.init(item: imageView, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1, constant: 0),
             NSLayoutConstraint.init(item: imageView, attribute: .trailing, relatedBy: .equal, toItem: self, attribute: .trailing, multiplier: 1, constant: 0),
-            NSLayoutConstraint.init(item: imageView, attribute: .height , relatedBy: .equal, toItem: imageView, attribute: .width, multiplier: 1, constant: 0),
+            NSLayoutConstraint.init(item: imageView, attribute: .height , relatedBy: .equal, toItem: imageView, attribute: .width, multiplier: 0.7, constant: 0),
             
             NSLayoutConstraint.init(item: imageLabel, attribute: .leading, relatedBy: .equal, toItem: self, attribute: .leading, multiplier: 1, constant: 0),
-            NSLayoutConstraint.init(item: imageLabel, attribute: .top, relatedBy: .equal, toItem: imageView, attribute: .bottom, multiplier: 1, constant: 4),
+            NSLayoutConstraint.init(item: imageLabel, attribute: .top, relatedBy: .equal, toItem: imageView, attribute: .bottom, multiplier: 1, constant: 2),
             NSLayoutConstraint.init(item: imageLabel, attribute: .trailing, relatedBy: .equal, toItem: self, attribute: .trailing, multiplier: 1, constant: 0)
         ])
         
@@ -57,9 +59,9 @@ class PhotoCollectionViewCell: UICollectionViewCell {
     }
     
     private func updateViews() {
-        if let photo = photo {
-            imageView.image = UIImage(data: photo.imageData)
-            imageLabel.text = photo.title
-        }
+        guard let photo = photo else { return }
+        imageView.image = UIImage(data: photo.imageData)
+        imageLabel.text = photo.title
+        
     }
 }

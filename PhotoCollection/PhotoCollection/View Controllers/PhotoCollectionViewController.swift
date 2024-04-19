@@ -17,8 +17,8 @@ class PhotoCollectionViewController: UICollectionViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        collectionView?.reloadData()
+    
+        collectionView.reloadData()
         setTheme()
     }
     
@@ -96,18 +96,15 @@ extension PhotoCollectionViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         
-        return UIEdgeInsets(top: 20, left: 10, bottom: 10, right: 10)
+        return UIEdgeInsets(top: 20, left: 16, bottom: 16, right: 16)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 8
+        return 2
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let horizontalInsets = collectionView.contentInset.left + collectionView.contentInset.right
-        let itemSpacing = (collectionViewLayout as! UICollectionViewFlowLayout).minimumInteritemSpacing * (horizontalCells - 1)
-        let width = (collectionView.frame.width - horizontalInsets - itemSpacing) / horizontalCells
-        return CGSize(width: width, height: width * 1.2)
+        return CGSize(width: 150, height: 170)
     }
     
 }

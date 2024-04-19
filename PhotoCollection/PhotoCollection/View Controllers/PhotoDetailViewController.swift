@@ -16,18 +16,14 @@ class PhotoDetailViewController: UIViewController, UIImagePickerControllerDelega
     
     var photoController: PhotoController?
     var themeHelper: ThemeHelper?
-    var photo: Photo? {
-        didSet {
-            updateViews()
-        }
-    }
+    var photo: Photo? 
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setUpSubviews()
         setTheme()
-        //updateViews()
+        updateViews()
     }
     
     // MARK: - UIImagePickerControllerDelegate
@@ -140,12 +136,14 @@ class PhotoDetailViewController: UIViewController, UIImagePickerControllerDelega
     private func presentImagePickerController() {
         guard UIImagePickerController.isSourceTypeAvailable(.photoLibrary) else { return }
         
-        let imagePicker = UIImagePickerController()
-        
-        imagePicker.sourceType = .photoLibrary
-        imagePicker.delegate = self
-        
-        present(imagePicker, animated: true, completion: nil)
+        DispatchQueue.main.async {
+            let imagePicker = UIImagePickerController()
+            
+            imagePicker.sourceType = .photoLibrary
+            imagePicker.delegate = self
+            
+            self.present(imagePicker, animated: true, completion: nil)
+        }
     }
     
     private func setTheme() {
