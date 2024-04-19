@@ -10,6 +10,8 @@ import Foundation
 
 class PhotoController {
     
+    var photos: [Photo] = []
+    
     func createPhoto(with imageData: Data, title: String) {
         let photo = Photo(imageData: imageData, title: title)
         
@@ -28,6 +30,4 @@ class PhotoController {
         photos.insert(scratch, at: index)
     }
     
-    
-    var photos: [Photo] = []
 }

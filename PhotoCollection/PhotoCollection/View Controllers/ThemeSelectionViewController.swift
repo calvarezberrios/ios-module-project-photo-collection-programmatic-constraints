@@ -9,6 +9,8 @@
 import UIKit
 
 class ThemeSelectionViewController: UIViewController {
+    
+    var themeHelper: ThemeHelper?
 
     func selectDarkTheme() {
         themeHelper?.setThemePreferenceToDark()
@@ -20,5 +22,4 @@ class ThemeSelectionViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
-    var themeHelper: ThemeHelper?
 }
