@@ -48,7 +48,7 @@ class PhotoCollectionViewCell: UICollectionViewCell {
             NSLayoutConstraint.init(item: imageView, attribute: .height , relatedBy: .equal, toItem: imageView, attribute: .width, multiplier: 1, constant: 0),
             
             NSLayoutConstraint.init(item: imageLabel, attribute: .leading, relatedBy: .equal, toItem: self, attribute: .leading, multiplier: 1, constant: 0),
-            NSLayoutConstraint.init(item: imageLabel, attribute: .top, relatedBy: .equal, toItem: imageView, attribute: .bottom, multiplier: 1, constant: 2),
+            NSLayoutConstraint.init(item: imageLabel, attribute: .top, relatedBy: .equal, toItem: imageView, attribute: .bottom, multiplier: 1, constant: 4),
             NSLayoutConstraint.init(item: imageLabel, attribute: .trailing, relatedBy: .equal, toItem: self, attribute: .trailing, multiplier: 1, constant: 0)
         ])
         

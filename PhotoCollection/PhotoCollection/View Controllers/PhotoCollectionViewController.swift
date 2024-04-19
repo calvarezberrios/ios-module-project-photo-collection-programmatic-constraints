@@ -10,6 +10,8 @@ import UIKit
 
 class PhotoCollectionViewController: UICollectionViewController {
     
+    private let horizontalCells: CGFloat = 2
+    
     let photoController = PhotoController()
     let themeHelper = ThemeHelper()
     
@@ -86,4 +88,26 @@ class PhotoCollectionViewController: UICollectionViewController {
             break
         }
     }
+}
+
+// MARK: - UICollectionViewDelegateFlowLayout
+
+extension PhotoCollectionViewController: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        let layout = UICollectionViewFlowLayout()
+        return UIEdgeInsets(top: 20, left: 10, bottom: 10, right: 10)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 8
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let horizontalInsets = collectionView.contentInset.left + collectionView.contentInset.right
+        let itemSpacing = (collectionViewLayout as! UICollectionViewFlowLayout).minimumInteritemSpacing * (horizontalCells - 1)
+        let width = (collectionView.frame.width - horizontalInsets - itemSpacing) / horizontalCells
+        return CGSize(width: width, height: width * 1.2)
+    }
+    
 }
